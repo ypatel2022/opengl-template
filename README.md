@@ -12,7 +12,7 @@ Are you tired of dealing with the tedious setup required for an OpenGL project? 
 
 Follow these simple steps to get started with the template:
 
-1. Click on the "Use as Template" button or clone this repository to your local machine.
+1. Click on the "Use this Template" button or clone this repository to your local machine.
 
 2. Once the template is on your machine, double click on the `opengl-template.sln` file to open the project in Visual Studio.
 
