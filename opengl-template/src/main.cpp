@@ -30,7 +30,7 @@ int main(void)
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
 	/* Create a windowed mode window and its OpenGL context */
-	window = glfwCreateWindow(600, 600, "fluid sim", NULL, NULL);
+	window = glfwCreateWindow(600, 600, "opengl-template", NULL, NULL);
 	if (!window)
 	{
 		glfwTerminate();
@@ -120,7 +120,7 @@ int main(void)
 
 			// bind shader
 			shader.Bind();
-			shader.SetUniform4f("u_Color", r, 0.3f, 0.8f, 1.0f);
+			// shader.SetUniform4f("u_Color", r, 0.3f, 0.8f, 1.0f);
 
 			renderer.Draw(va, ib, shader);
 

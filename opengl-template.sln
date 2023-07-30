@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "fluid-sim", "fluid-sim\fluid-sim.vcxproj", "{88FF8B0E-70AC-47EA-99D1-AF448CD52529}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "opengl-template", "opengl-template\opengl-template.vcxproj", "{88FF8B0E-70AC-47EA-99D1-AF448CD52529}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

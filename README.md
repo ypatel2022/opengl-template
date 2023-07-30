@@ -20,4 +20,6 @@ Follow these simple steps to get started with the template:
 
 4. You're all set to unleash your creativity and develop your OpenGL project! 🚀
 
+   Note: make sure you change your solution explorer view to `Show All Files`
+
 I hope this template streamlines your development process and makes working with OpenGL a breeze. Happy coding! If you encounter any issues or have suggestions for improvements, feel free to leave a pull request or a new issue. Enjoy your OpenGL journey! 😊
