@@ -19,7 +19,7 @@ private:
 	unsigned int m_RendererID;
 
 	// caching for uniforms
-	std::unordered_map<std::string, int> m_UniformLocationCache;
+	mutable std::unordered_map<std::string, GLint> m_UniformLocationCache;
 
 public:
 	Shader(const std::string& vertexPath, const std::string& fragmentPath);
@@ -39,6 +39,6 @@ private:
 	unsigned int CompileShader(unsigned int type, const std::string& source);
 	unsigned int CreateShader(const std::string& vertexShader, const std::string& fragmentShader);
 
-	int GetUniformLocation(const std::string& name);
+	int GetUniformLocation(const std::string& name) const;
 };
 
