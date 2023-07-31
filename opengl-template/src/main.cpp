@@ -1,5 +1,8 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
+#include "imgui/imgui.h"
+#include "imgui/imgui_impl_glfw.h"
+#include "imgui/imgui_impl_opengl3.h"
 
 #include <iostream>
 #include <string>
@@ -41,6 +44,21 @@ int main(void)
 	glfwMakeContextCurrent(window);
 	// sync with monitor refresh rate
 	glfwSwapInterval(1);
+
+	// imgui setup
+	IMGUI_CHECKVERSION();
+	ImGui::CreateContext();
+	ImGuiIO& io = ImGui::GetIO();
+	// Enable Keyboard Controls
+	io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
+
+	// Setup Platform/Renderer backends
+	// Second param install_callback=true will install GLFW callbacks and chain to existing ones.
+	ImGui_ImplGlfw_InitForOpenGL(window, true);
+	ImGui_ImplOpenGL3_Init();
+
+	// setup style
+	ImGui::StyleColorsDark();
 
 	/* Initialize GLEW */
 	if (glewInit() != GLEW_OK) {
@@ -107,16 +125,20 @@ int main(void)
 		// create renderer
 		Renderer renderer;
 
-
-		// for color animation
-		float r = 0.0f;
-		float increment = 0.025f;
-
 		/* Loop until the user closes the window */
 		while (!glfwWindowShouldClose(window))
 		{
 			/* Render here */
 			renderer.Clear();
+
+			// Start the Dear ImGui frame
+			ImGui_ImplOpenGL3_NewFrame();
+			ImGui_ImplGlfw_NewFrame();
+
+			// create imgui window
+			ImGui::NewFrame();
+			ImGui::ShowDemoWindow();
+
 
 			// bind shader
 			shader.Bind();
@@ -124,13 +146,9 @@ int main(void)
 
 			renderer.Draw(va, ib, shader);
 
-
-			if (r > 1.0f)
-				increment = -0.05f;
-			else if (r < 0.0f)
-				increment = 0.05f;
-
-			r += increment;
+			// Rendering
+			ImGui::Render();
+			ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
 			/* Swap front and back buffers */
 			glfwSwapBuffers(window);
@@ -139,6 +157,11 @@ int main(void)
 			glfwPollEvents();
 		}
 	}
+
+	// cleanup
+	ImGui_ImplOpenGL3_Shutdown();
+	ImGui_ImplGlfw_Shutdown();
+	ImGui::DestroyContext();
 
 	glfwTerminate();
 	return 0;
